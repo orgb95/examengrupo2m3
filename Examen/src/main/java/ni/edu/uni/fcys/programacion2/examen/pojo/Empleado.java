@@ -13,18 +13,26 @@ public class Empleado {
     private int id;
     private String nombres;
     private String cedula;
-    private String fecha_contratacion;
+    private int anio_contratacion;
     private float salario;
+    private float inss;
+    private float ir;
+    private float antiguedad;
+    private float salarioNeto;
 
     public Empleado() {
     }
 
-    public Empleado(int id, String nombres, String cedula, String fecha_contratacion, float salario) {
+    public Empleado(int id, String nombres, String cedula, int anio_contratacion, float salario, float inss, float ir, float antiguedad, float salarioNeto) {
         this.id = id;
         this.nombres = nombres;
         this.cedula = cedula;
-        this.fecha_contratacion = fecha_contratacion;
+        this.anio_contratacion = anio_contratacion;
         this.salario = salario;
+        this.inss = inss;
+        this.ir = ir;
+        this.antiguedad = antiguedad;
+        this.salarioNeto = salarioNeto;
     }
 
     public int getId() {
@@ -51,12 +59,12 @@ public class Empleado {
         this.cedula = cedula;
     }
 
-    public String getFecha_contratacion() {
-        return fecha_contratacion;
+    public int getAnio_contratacion() {
+        return anio_contratacion;
     }
 
-    public void setFecha_contratacion(String fecha_contratacion) {
-        this.fecha_contratacion = fecha_contratacion;
+    public void setAnio_contratacion(int anio_contratacion) {
+        this.anio_contratacion = anio_contratacion;
     }
 
     public float getSalario() {
@@ -66,6 +74,37 @@ public class Empleado {
     public void setSalario(float salario) {
         this.salario = salario;
     }
-    
+
+    public float getInss() {
+        return inss;
+    }
+
+    public void setInss(float inss) {
+        this.inss = inss;
+    }
+
+    public float getIr() {
+        return ir;
+    }
+
+    public void setIr(float ir) {
+        this.ir = ir;
+    }
+
+    public float getAntiguedad() {
+        return antiguedad;
+    }
+
+    public void setAntiguedad(float antiguedad) {
+        this.antiguedad = antiguedad;
+    }
+
+    public float getSalarioNeto() {
+        return salarioNeto;
+    }
+
+    public void setSalarioNeto(float salarioNeto) {
+        this.salarioNeto = salarioNeto;
+    }
     
 }

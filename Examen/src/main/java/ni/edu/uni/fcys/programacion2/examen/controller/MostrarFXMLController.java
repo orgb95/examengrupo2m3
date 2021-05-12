@@ -25,6 +25,8 @@ import ni.edu.uni.fcys.programacion2.examen.core.calcular;
  */
 public class MostrarFXMLController implements Initializable {
 
+    int contador = 0;
+    
     @FXML
     public TextField txtNombre;
     @FXML
@@ -62,19 +64,36 @@ public class MostrarFXMLController implements Initializable {
 
     @FXML
     public void btnAgregarAction(ActionEvent event) {
-        int id;
+        //Datos del pojo
+        int id = contador++;
         String nombres = txtNombre.getText();
         String cedula = txtCedula.getText();
-        String fecha_contratacion = txtFechaContratacion.getText();
+        int anio_contratacion = Integer.parseInt(txtFechaContratacion.getText());
         float salario = Float.parseFloat(txtSalario.getText());
         
-        columnCedula.setCellValueFactory(new PropertyValueFactory<>("nombres"));
+        //Datos de la tabla
+        float inss = calcular.inss(salario);
+        float salarioAnual = calcular.salarioAnual(salario, inss);
+        float ir = calcular.ir(salario, inss);
+        float antiguedad = calcular.antiguedad(anio_contratacion);
+        float salarioNeto = calcular.salarioNeto(salario, inss, ir);
+        
+        columnCedula.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+        columnInss.setCellValueFactory(new PropertyValueFactory<>("inss"));
+        columnIR.setCellValueFactory(new PropertyValueFactory<>("ir"));
+        columnAntiguedad.setCellValueFactory(new PropertyValueFactory<>("antiguedad"));
+        columnSalarioNeto.setCellValueFactory(new PropertyValueFactory<>("salarioNeto"));
+        
+        
+        
+        tblViewEmpleados.getItems().add(new Empleado(id, nombres, cedula, anio_contratacion, salario, inss, ir, antiguedad, salarioNeto));
         
         
     }
 
     @FXML
     public void btnEliminarAction(ActionEvent event) {
+        tblViewEmpleados.getItems().remove(tblViewEmpleados.getSelectionModel().getSelectedIndex());   
     }
     
 }
